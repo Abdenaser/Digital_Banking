@@ -1,8 +1,10 @@
 package ma.enset.ebankbackend.Mappers;
 
+import ma.enset.ebankbackend.DTOs.AccountOperationDTO;
 import ma.enset.ebankbackend.DTOs.CurrentBankAccountDTO;
 import ma.enset.ebankbackend.DTOs.CustomerDTO;
 import ma.enset.ebankbackend.DTOs.SavingBankAccountDTO;
+import ma.enset.ebankbackend.Entities.AccountOperation;
 import ma.enset.ebankbackend.Entities.CurrentAccount;
 import ma.enset.ebankbackend.Entities.Customer;
 import ma.enset.ebankbackend.Entities.SavingAccount;
@@ -28,7 +30,7 @@ public class BankAccountMapperImpl {
         SavingBankAccountDTO savingBankAccountDTO=new SavingBankAccountDTO();
         BeanUtils.copyProperties(savingAccount,savingBankAccountDTO);
         savingBankAccountDTO.setCustomerDTO(fromCustomer(savingAccount.getCustomer()));
-        //savingBankAccountDTO.set(savingAccount.getClass().getSimpleName());
+        savingBankAccountDTO.setType(savingAccount.getClass().getSimpleName());
         return savingBankAccountDTO;
     }
 
@@ -43,7 +45,7 @@ public class BankAccountMapperImpl {
         CurrentBankAccountDTO currentBankAccountDTO=new CurrentBankAccountDTO();
         BeanUtils.copyProperties(currentAccount,currentBankAccountDTO);
         currentBankAccountDTO.setCustomerDTO(fromCustomer(currentAccount.getCustomer()));
-        //currentBankAccountDTO.setType(currentAccount.getClass().getSimpleName());
+        currentBankAccountDTO.setType(currentAccount.getClass().getSimpleName());
         return currentBankAccountDTO;
     }
 
@@ -52,5 +54,12 @@ public class BankAccountMapperImpl {
         BeanUtils.copyProperties(currentBankAccountDTO,currentAccount);
         currentAccount.setCustomer(fromCustomerDTO(currentBankAccountDTO.getCustomerDTO()));
         return currentAccount;
+    }
+
+
+    public AccountOperationDTO fromAccountOperation(AccountOperation accountOperation){
+        AccountOperationDTO accountOperationDTO=new AccountOperationDTO();
+        BeanUtils.copyProperties(accountOperation,accountOperationDTO);
+        return accountOperationDTO;
     }
 }
