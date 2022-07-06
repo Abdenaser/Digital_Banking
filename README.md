@@ -21,5 +21,3 @@ transactions. The application consists of the following layers:
 
 ![dg](https://user-images.githubusercontent.com/85079548/168427608-20c6062e-15a1-4659-ab74-03a77b9c107b.png)
 
-<h2> digital_banking front : </h2>
-https://github.com/Abdenaser/Digital_Banking_Front
